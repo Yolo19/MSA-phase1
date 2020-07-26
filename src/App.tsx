@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import logo from './logo.svg';
 import './App.css';
 import SearchBar from './Components/SearchBarComponent/SearchBar';
 import MediaGrid from './Components/MediaGridComponent/MediaGrid';
