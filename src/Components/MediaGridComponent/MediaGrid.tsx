@@ -4,36 +4,48 @@ import { Grid } from '@material-ui/core';
 import './MediaGrid.css';
 
 interface IState {
-    links: any[];
-    data: any[];
+    gender: any | null;
+    name: any | null;
+    location: any | null;
+    email: any | null;
+    login: any | null;
+    picture: any | null;
+
 }
 interface IMediaGridProps {
-    SearchQuery: (string | null);
-    StartDate: (Date | null);
-    EndDate: (Date | null);
+    DisplayNumber: (any | null);
 }
 function MediaGrid(props: IMediaGridProps) {
-    const [ItemArray, setItemArray] = useState<IState[]>([{ links: [], data: [] }]);
+    const [ItemArray, setItemArray] = useState<IState[]>([{ 
+        gender: null,
+        name: null,
+        location: null,
+        email: null,
+        login: null,
+        picture: null,
+     }]);
 
     useEffect(() => {
-        fetch('https://images-api.nasa.gov/search?media_type=image&q=' + props.SearchQuery + '&year_start=' + props.StartDate?.getFullYear() + '&year_end=' + props.EndDate?.getFullYear())
+        fetch('https://randomuser.me/api/?results=' + props.DisplayNumber)
             .then(response => response.json())
             .then(response => {
-                setItemArray(response.collection.items)
+                console.log(response)
+                setItemArray(response.results)
             })
             .catch(() => console.log("it didn't work")
+    
             );
 
-    }, [props.SearchQuery, props.EndDate, props.StartDate]);
+    }, [props.DisplayNumber]);
 
     var Cards: JSX.Element[] = [];
     ItemArray.forEach((el: IState, i: Number) => {
-        if (!el || !el.links[0] || !el.data) {
+        if (!el || !el.picture || !el.name) {
             return;
         }
         Cards.push(
             <Grid key={"card_"+i} item sm={6} md={4} lg={3} className="MediaGridCard">
-                <MediaCard ImageUrl={el['links'][0]['href']} Description={el["data"][0]['description']} />
+                <MediaCard ImageUrl={el['picture']['medium']} Name={el["name"]['first']} />
             </Grid>)
     })
 

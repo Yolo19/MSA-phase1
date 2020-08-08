@@ -8,7 +8,7 @@ import './MediaCard.css';
 
 interface IMediaCardProps {
     ImageUrl: string | undefined;
-    Description: string | undefined;
+    Name: string | undefined;
 }
 
 function MediaCard(props: IMediaCardProps) {
@@ -22,7 +22,7 @@ function MediaCard(props: IMediaCardProps) {
                     />
                     <CardContent>
                         <Typography variant="body2" color="textSecondary" component="p" className="MediaCardDescription">
-                            {props.Description}
+                            {props.Name}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
