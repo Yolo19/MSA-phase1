@@ -1,4 +1,4 @@
-This App is a piture wall, which can show user photes and names randomly. You need input a number in search bar and click the "Apply", then the webpages will display the user photos and names.
+This App is a picture wall, which can show user photes and names randomly. You need input a number in search bar and click the "Apply", then the webpages will display the user photos and names.
 
 ![Alt text](https://github.com/Yolo19/MSA-phase1/blob/master/demo/ScreenShortcut.jpg)
 
